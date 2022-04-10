@@ -1,4 +1,4 @@
-package com.cheng.springsecuritydemo.service;
+package com.cheng.springsecuritydemo.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +33,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         // 2.把查询出来的密码（注册时已加过密）进行解析，或者把密码直接放入构造函数里
         String password = pw.encode("123");
-        return new User(username,password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin,normal"));
+        // 给用户分配权限 admin、normal和角色abc,这里分配的角色需要以 ROLE_ 做为前缀，框架会自动识别为角色abc
+        return new User(username,password,
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin,normal,ROLE_abc,/main.html,/insert,/update"));
     }
 }

@@ -1,4 +1,4 @@
-package com.cheng.springsecuritydemo.hanle;
+package com.cheng.springsecuritydemo.handler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
